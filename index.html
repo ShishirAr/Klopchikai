@@ -506,13 +506,21 @@
             body {
                 height: -webkit-fill-available;
             }
+              .logo {
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
         }
     </style>
 </head>
 <body>
-    <div class="header">
+     <div class="header">
         <div class="header-left">
-            <div class="logo">Klopchik</div>
+            <div class="logo" onclick="redirectToHomePage()">Klopchik</div>
             <div class="version">AI</div>
         </div>
         <div class="status" id="status">Connecting...</div>
@@ -607,6 +615,10 @@
             messageInput.value = text;
             autoResize(messageInput);
             sendMessage();
+        }
+         // Redirect to home page when logo is clicked
+        function redirectToHomePage() {
+            window.location.href = 'index.html'; // Change to your home page URL
         }
         
         // Add message to chat
@@ -772,5 +784,6 @@
     </script>
 </body>
 </html>
+
 
 
