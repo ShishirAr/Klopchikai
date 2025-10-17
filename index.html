@@ -148,8 +148,8 @@
             min-height: 24px;
             line-height: 1.5;
             outline: none;
-            -webkit-appearance: none;
-            border-radius: 12px;
+            -webkit-appearance: none; /* Remove iOS styling - FIXED */
+            border-radius: 12px; /* Explicitly set for iOS */
         }
         
         .input-field:focus {
@@ -197,6 +197,33 @@
             gap: 5px;
             font-size: 14px;
             color: #8e8ea0;
+        }
+        
+        .checkbox-wrapper input[type="checkbox"] {
+            -webkit-appearance: none; /* Remove iOS styling from checkbox */
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #8e8ea0;
+            border-radius: 3px;
+            background-color: #40414f;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .checkbox-wrapper input[type="checkbox"]:checked {
+            background-color: #10a37f;
+            border-color: #10a37f;
+        }
+        
+        .checkbox-wrapper input[type="checkbox"]:checked::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         
         .typing-indicator {
@@ -480,32 +507,32 @@
 <body>
     <div class="header">
         <div class="header-left">
-            <div class="logo">ChatGPT</div>
-            <div class="version">5</div>
+            <div class="logo">Klopchik</div>
+            <div class="version">AI</div>
         </div>
         <div class="status" id="status">Connecting...</div>
     </div>
     
     <div class="chat-container" id="chatContainer">
         <div class="welcome-container" id="welcomeContainer">
-            <div class="welcome-title">ChatGPT 5</div>
+            <div class="welcome-title">Klopchik AI</div>
             <div class="welcome-subtitle">Ready when you are. Ask anything</div>
             <div class="examples-container">
-                <div class="example-card" onclick="handleExampleClick('Explain quantum computing in simple terms')">
-                    <div class="example-title">Explain quantum computing</div>
-                    <div class="example-description">In simple terms that a child could understand</div>
+                <div class="example-card" onclick="handleExampleClick('Mero name k ho?')">
+                    <div class="example-title">Mero name k ho?</div>
+                    <div class="example-description">If you want to know your name!</div>
                 </div>
-                <div class="example-card" onclick="handleExampleClick('Got any creative ideas for a 10 year old\'s birthday?')">
-                    <div class="example-title">Creative birthday ideas</div>
-                    <div class="example-description">For a 10 year old's birthday party</div>
+                <div class="example-card" onclick="handleExampleClick('What is Klopchik?')">
+                    <div class="example-title">What is Klopchik?</div>
+                    <div class="example-description">If you want to know what klopchik mean?</div>
                 </div>
-                <div class="example-card" onclick="handleExampleClick('How do I make an HTTP request in JavaScript?')">
-                    <div class="example-title">HTTP request in JavaScript</div>
-                    <div class="example-description">Show me how to use fetch API</div>
+                <div class="example-card" onclick="handleExampleClick('Mero laro ko size?')">
+                    <div class="example-title">Mero Laro ko size?</div>
+                    <div class="example-description">If you want to know your dih size</div>
                 </div>
-                <div class="example-card" onclick="handleExampleClick('Write a poem about artificial intelligence')">
-                    <div class="example-title">Write a poem about AI</div>
-                    <div class="example-description">Something thoughtful and creative</div>
+                <div class="example-card" onclick="handleExampleClick('Who is Gay?')">
+                    <div class="example-title">Who is Gay?</div>
+                    <div class="example-description">If you want to know who is gay?</div>
                 </div>
             </div>
         </div>
@@ -516,7 +543,7 @@
             <textarea 
                 class="input-field" 
                 id="messageInput" 
-                placeholder="Message ChatGPT..." 
+                placeholder="Message Klopchik AI..." 
                 rows="1"
                 oninput="autoResize(this)"
             ></textarea>
@@ -539,6 +566,8 @@
     <script>
         // API Configuration
         const API = 'http://127.0.0.1:8000';
+
+
         
         // DOM Elements
         const chatContainer = document.getElementById('chatContainer');
@@ -585,7 +614,7 @@
             
             const avatar = document.createElement('div');
             avatar.className = `avatar ${sender}-avatar`;
-            avatar.textContent = sender === 'user' ? 'U' : 'C';
+            avatar.textContent = sender === 'user' ? 'U' : 'K';
             
             const textDiv = document.createElement('div');
             textDiv.className = 'text';
@@ -612,7 +641,7 @@
             
             const avatar = document.createElement('div');
             avatar.className = 'avatar assistant-avatar';
-            avatar.textContent = 'C';
+            avatar.textContent = 'K';
             
             const typingIndicator = document.createElement('div');
             typingIndicator.className = 'typing-indicator';
