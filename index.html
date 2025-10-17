@@ -251,6 +251,32 @@
         .dot:nth-child(3) {
             animation-delay: 0.4s;
         }
+        /* Remove gap between keyboard and input on mobile */
+     @media (max-width: 768px) {
+        .input-container {
+        padding-bottom: 0;
+      }
+    
+    .options-container {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    
+    body {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+}
+
+/* For iOS Safari specifically */
+@supports (-webkit-touch-callout: none) {
+    .input-container {
+        padding-bottom: 0;
+    }
+    
+    .options-container {
+        padding-bottom: 0;
+    }
+}
         
         @keyframes pulse {
             0%, 100% {
@@ -785,6 +811,7 @@
     </script>
 </body>
 </html>
+
 
 
 
